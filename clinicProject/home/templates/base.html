@@ -1,0 +1,134 @@
+{% load static %}
+
+<html>
+	<head>
+		<title>{% block title %}Accueil{% endblock %} | Clinique</title>
+		<!--<link rel="icon" href="imageset/favicon.png">-->
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="shortcut icon" type="image/png" href="{% static "favicon.png" %}"/>
+		<link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+		<script defer src="https://use.fontawesome.com/releases/v5.0.9/js/all.js" integrity="sha384-8iPTk2s/jMVj81dnzb/iFR2sdA7u06vHJyyLlAd4snFpCl/SnyUjRrbdJsw1pGIl" crossorigin="anonymous"></script>
+		<link rel="stylesheet" href="{% static "css/materialize.min.css" %}">
+		<link rel="stylesheet" href="{% static "css/style.css" %}">
+		<script src="{% static "js/jquery-3.2.1.min.js" %}"></script>
+		<script src="{% static "js/materialize.min.js" %}"></script>
+
+		<script src="{% static "js/script.js" %}"></script>
+		 <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+	</head>
+
+	<body>
+		<body background="C:\Users\lenovo\Downloads\hospital-management-software-solution-ConvertImage.png">
+
+		{% if messages %}
+			{% for message in messages %}
+					<script>
+						Materialize.toast('{{ message }}', 3000);
+					</script>
+			{% endfor %}
+		{% endif %}
+
+		<ul id="slide-out" class="side-nav fixed">
+			<li><div class="user-view">
+		      <div class="background">
+						<img src="{% static "index.jpg" %}">
+		      </div>
+		      		{% if request.user.doctor %}
+
+					<a href="/users"><img class="circle center" src="{% static 'account.png' %}"></a>
+		      <a href="/users"><span class="white-text name">{{request.user.first_name}} {{request.user.last_name}}</span></a>
+		      <a href="/users"><span class="white-text email">{{request.user.email}}</span></a>
+		    	</div>
+			</li>
+
+			<li><a class="waves-effect waves-grey" href="/users"><i class="fas fa-home"></i> Profile</a></li>
+
+			{% endif %}
+			{% if request.user.secretaire %}
+
+					<a href="/users/profileSec"><img class="circle center" src="{% static 'account.png' %}"></a>
+		      <a href="/users/profileSec"><span class="white-text name">{{request.user.first_name}} {{request.user.last_name}}</span></a>
+		      <a href="/users/profileSec"><span class="white-text email">{{request.user.email}}</span></a>
+		      
+		    	</div>
+			</li>
+
+			<li><a class="waves-effect waves-grey" href="/users/profileSec"><i class="fas fa-home"></i> Profile</a></li>
+
+			{% endif %}
+			
+			{% if request.user.is_superuser %}
+
+					<a href="/admin/auth/user/1/change/"><img class="circle center" src="{% static 'account.png' %}"></a>
+		      <a href="/admin/auth/user/1/change/"><span class="white-text name">{{request.user.first_name}} {{request.user.last_name}}</span></a>
+		      <a href="/admin/auth/user/1/change/"><span class="white-text email">{{request.user.email}}</span></a>
+		    	</div>
+			</li>
+
+			<li><a class="waves-effect waves-grey" href="/admin/auth/user/1/change/"><i class="fas fa-home"></i> Profile</a></li>
+
+			{% endif %}
+
+			{% if request.user.doctor %}
+				<li><a class="waves-effect waves-grey" href="/appointments"><i class="fas fa-stethoscope"></i> Rendez-vous</a></li>
+				<li><a class="waves-effect waves-grey" href="/case"><i class="fas fa-file-medical"></i>  Dossiers médicaux</a></li>
+
+			{% endif %}
+
+			{% if request.user.secretaire %}
+				<li> <a class="waves-effect waves-grey" href="/profile/register"> <i class="fas fa-file-medical"></i> Dossier Médical </a>
+				<li><a class="waves-effect waves-grey" href="/appointments"><i class="fas fa-stethoscope"></i> Rendez-vous </a></li>
+				<li><a class="waves-effect waves-grey" href="/case"> <i class="fas fa-diagnoses"></i> Ajouter une consultation</a></li>
+				<li><a class="waves-effect waves-grey" href="/case/generate"><i class="fas fa-file-medical"></i> Gerer les cas</a></li>
+				<li><a class="waves-effect waves-grey" href="/facture"> <i class="fas fa-file-medical-alt"></i> Factures</a></li>
+
+			{% endif %}
+
+			{% if request.user.is_superuser %}
+
+				<li><a class="waves-effect waves-grey" href="/users/registerUser"><i class="fas fa-user-md"></i> Médecin</a></li>
+				<li><a class="waves-effect waves-grey" href="/users/registerSec"></i><i class="fas fa-user-plus"></i> Secrétaire</a></li>
+				
+
+			{% endif %}
+			
+			<li><div class="divider"></div></li>
+			<li><a class="subheader">Actions</a></li>
+
+			
+		</ul>
+
+		<main class="center-align">
+					<nav>
+			    	<div class="nav-wrapper blue-grey darken-3">
+							<a href="#" data-activates="slide-out" class="button-collapse"><i class="material-icons">menu</i></a>
+							<a href="#" class="brand-logo center">{% block heading %}e-Clinic{% endblock %}</a>
+							<span class="right-align"><a href="/logout" class="btn-floating btn-large halfway-fab waves-effect waves-light black right-align"><i class="material-icons">exit_to_app</i></a></span>
+						</div>
+					</nav>
+					<div id="body">
+						{% block body %}{% endblock %}
+					</div>
+		</main>
+
+
+		<footer class="page-footer blue-grey darken-2">
+			<div class="container">
+        <div class="row">
+          <div class="col l12 s12 grey-text text-lighten-4">
+           
+						<div class="center"> Rachakha Mehdi| Akdim Amine | Elouadi Aissa </div>
+						<div class="center">
+							
+						</div>
+
+
+          </div>
+        </div>
+      </div>
+  	</footer>
+
+
+	</body>
+</html>

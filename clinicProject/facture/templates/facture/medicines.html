@@ -1,0 +1,23 @@
+{% extends "base.html" %}
+
+{% block title %}Actes{% endblock %}
+{% block heading %}Consultation{% endblock %}
+{% block body %}
+
+<div class="container">
+<ul class="collapsible popout" data-collapsible="accordion">
+  {% for facture in factures %}
+  <li>
+    <div class="collapsible-header blue-grey"><i class="material-icons">assignment_turned_in</i>{{facture.acte.acte_name}}</div>
+    <div class="collapsible-body">
+      <span>acte</span> <span class="blue-text text-lighten-1">{{facture.acte.acte_name}}</span><br>
+      <span>Nombre</span> <span class="blue-text text-lighten-1">{{facture.quantite}}</span><br>
+      <span>Date</span> <span class="blue-text text-lighten-1">{{facture.facture_date}}</span><br>
+      <span>Description</span> <span class="blue-text text-lighten-1">{{facture.facture_details}}</span><br>
+      <span>Prix à payer</span> <span class="blue-text text-lighten-1">{{facture.ammount}}</span><br>
+    </div>
+  </li>
+  {% endfor %}
+</ul>
+</div>
+{% endblock %}

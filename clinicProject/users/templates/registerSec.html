@@ -1,0 +1,61 @@
+{% extends "base.html" %}
+
+{% block title %}Ajouter|Secretaire{% endblock %}
+{% block heading %}Ajouter secretaire{% endblock %}
+
+{% block body %}
+<div class="row">
+  <form class="col s12" action='/users/doRegisterSec/' method='POST'>
+    {% csrf_token %}
+    <div class="row">
+      <div class="input-field col s6">
+        <i class="material-icons prefix">account_circle</i>
+        <input type="text" name="first_name" id="first_name" class="validate" required>
+        <label for="first_name" > Nom</label>
+      </div>
+      <div class="input-field col s6">
+        <i class="material-icons prefix">account_circle</i>
+        <input type="text" name="last_name" id="last_name" class="validate" required>
+        <label for="last_name" > Prénom</label>
+      </div>
+      <div class="input-field col s12">
+        <input type="text" name="username" id="username" class="validate" required>
+        <label for="username" >Identifiant</label>
+      </div>
+      <div class="input-field col s6">
+        <input type="password" name="password1" id="password1" class="validate" required>
+        <label for="password1" >Mot de passe </label>
+      </div>
+      <div class="input-field col s6">
+        <input type="password" name="password2" id="password2" class="validate" required>
+        <label for="password2" >Confirmation </label>
+      </div>
+      <div class="input-field col s6">
+         <i class="material-icons prefix">phone</i>
+        <input type="text" name="contact_no" id="contact_no" class="validate" maxlength="10" required>
+        <label for="contact_no" >Contact </label>
+      </div>
+      <div class="input-field col s6">
+         <i class="material-icons prefix">email</i>
+        <input type="email" name="email" id="email" class="validate" required>
+        <label for="email" >Email</label>
+      </div>
+      
+      <div class="input-field col s6">
+        <input type="text" name="CIN" id="CIN" required>
+        <label for="CIN" class="active">CIN</label>
+      </div>
+      <div class="input-field col s6">
+        <select name="sex" id="sex" class="validate" required>
+          <option value='F'>Femme</option>
+          <option value='M'>Homme</option>
+          
+        </select>
+        <label for="sexe" >Sexe</label>
+      </div>
+
+      <button type="submit" class="btn" > Enregistrer </button>
+    </div>
+  </form>
+</div>
+{% endblock %}

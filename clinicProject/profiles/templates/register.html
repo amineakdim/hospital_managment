@@ -1,0 +1,94 @@
+{% extends "base.html" %}
+
+{% block title %}Patient{% endblock %}
+{% block heading %}Ajouter un Patient{% endblock %}
+
+{% block body %}
+<div class="row">
+  <form class="col s12" action='/profile/doRegister/' method='POST'>
+    {% csrf_token %}
+    <div class="row">
+      <div class="input-field col s6">
+         <i class="material-icons prefix">account_circle</i>
+        
+        <input type="text" name="first_name" id="first_name" class="validate" required>
+        <label for="first_name" >Nom</label>
+      </div>
+      <div class="input-field col s6">
+        <i class="material-icons prefix">account_circle</i>
+        <input type="text" name="last_name" id="last_name" class="validate" required>
+        <label for="last_name" >Prénom</label>
+      </div>
+      <div class="input-field col s12">
+        <input type="text" name="username" id="username" class="validate" required>
+        <label for="username" >Identifiant</label>
+      </div>
+      <div class="input-field col s6">
+        <input type="password" name="password1" id="password1" class="validate" required>
+        <label for="password1" >Mot de passe</label>
+      </div>
+      <div class="input-field col s6">
+        <input type="password" name="password2" id="password2" class="validate" required>
+        <label for="password2" >Confirmation du MDP</label>
+      </div>
+
+
+           <div class="input-field col s6">
+        <select name="sex" id="sex" class="validate" required>
+          <option value='F'>Femme</option>
+          <option value='M'>Homme</option>
+          
+        </select>
+        <label for="sexe" >Sexe</label>
+      </div>
+     <div class="input-field col s6">
+        <input type="text" name="CIN" id="CIN" required>
+        <label for="CIN" class="active">CIN</label>
+      </div>
+
+
+
+
+      <div class="input-field col s6">
+        <i class="material-icons prefix">phone</i>
+        <input type="text" name="contact_no" id="contact_no" class="validate" maxlength="10" required>
+        <label for="contact_no" >Num/Fix</label>
+      </div>
+      <div class="input-field col s6">
+        <i class="material-icons prefix">email</i>
+        <input type="email" name="email" id="email" class="validate" required>
+        <label for="email" >Email</label>
+      </div>
+      <div class="input-field col s6">
+        <i class="material-icons prefix">home</i>
+        <textarea name="address" id="address" class="materialize-textarea" required></textarea>
+        <label for="address" >Addresse de résidence</label>
+      </div>
+      <div class="input-field col s6">
+        
+        <textarea name="profession" id="profesion" class="materialize-textarea" required></textarea>
+        <label for="profession" >Profession</label>
+      </div>
+      <div class="input-field col s6">
+        <input type="date" name="dob" id="dob" required>
+        <label for="dob" class="active">Date de naissance </label>
+      </div>
+      <div class="input-field col s6">
+        <select name="blood_group" id="blood_group" class="validate" required>
+          <option value='O-'>O-</option>
+          <option value='O+'>O+</option>
+          <option value='A-'>A-</option>
+          <option value='A+'>A+</option>
+          <option value='B-'>B-</option>
+          <option value='B+'>B+</option>
+          <option value='AB-'>AB-</option>
+          <option value='AB+'>AB+</option>
+        </select>
+        <label for="blood_group" > groupe sanguin </label>
+      </div>
+
+      <button type="submit" class="btn" >Ajouter</button>
+    </div>
+  </form>
+</div>
+{% endblock %}
