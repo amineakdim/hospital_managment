@@ -76,8 +76,6 @@ def doRegisterUser(request):
 		doctor.doctor = Doctor(contact_no=int(contact_no), sex=sex, speciality=speciality, CIN=CIN)
 		doctor.save()
 		doctor.doctor.save()
-    
-
 		group = Group.objects.get(name='doctor')
 		group.user_set.add(doctor)
 		group.save()
